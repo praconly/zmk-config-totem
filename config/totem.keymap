@@ -404,6 +404,7 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         hml_over_g: hml_over_g {
@@ -413,6 +414,7 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         hmr_over_semi: hmr_over_semi {
@@ -422,6 +424,7 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         hmr_over_h: hmr_over_h {
@@ -431,6 +434,17 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        overrider: overrider {
+            compatible = "zmk,behavior-hold-tap";
+            label = "OVERRIDER";
+            bindings = <&kp>, <&none>;
+
+            #binding-cells = <2>;
+            retro-tap;
+            tapping-term-ms = <100>;
         };
     };
 
@@ -439,10 +453,10 @@
 
         BASE_LR {
             bindings = <
-       &kp Q        &kp W  &kp E   &kp R  &kp T          &kp Y        &kp U       &kp I      &kp O    &kp P
-       &hml_over_a  &kp S  &kp D   &kp F  &hml_over_g    &hmr_over_h  &kp J       &kp K      &kp L    &hmr_over_semi
-&none  &kp Z        &kp X  &kp C   &kp V  &kp B          &kp N        &kp M       &kp COMMA  &kp DOT  &kp FSLH        &none
-                           &mo 13  &mo 1  &kp SPACE      &kp ENTER    &lt 2 RALT  &mo 3
+        &kp Q        &kp W  &kp E   &kp R  &kp T          &kp Y        &kp U        &kp I      &kp O    &kp P
+        &hml_over_a  &kp S  &kp D   &kp F  &hml_over_g    &hmr_over_h  &kp J        &kp K      &kp L    &hmr_over_semi
+&mo 15  &kp Z        &kp X  &kp C   &kp V  &kp B          &kp N        &kp M        &kp COMMA  &kp DOT  &kp FSLH        &to 9
+                            &mo 13  &mo 1  &kp SPACE      &kp ENTER    &lt 2 LANG1  &mo 3
             >;
 
             label = "BASE";
@@ -450,10 +464,10 @@
 
         NUM_L {
             bindings = <
-        &kp MINUS     &kp EQUAL     &kp BACKSPACE  &kp DELETE    &tog 1          &trans  &trans  &trans  &trans  &trans
-        &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp NUMBER_4  &kp N5          &trans  &trans  &trans  &trans  &trans
-&trans  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9  &kp NUMBER_0    &trans  &trans  &trans  &trans  &trans  &trans
-                                    &trans         &to 0         &trans          &trans  &trans  &trans
+            &kp MINUS     &kp EQUAL     &kp BACKSPACE  &kp DELETE    &tog 1          &trans  &trans  &trans  &trans  &trans
+            &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp NUMBER_4  &kp N5          &trans  &trans  &trans  &trans  &trans
+&kp LSHIFT  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9  &kp NUMBER_0    &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans         &to 0         &trans          &trans  &trans  &trans
             >;
 
             label = "NUM_L";
@@ -540,7 +554,7 @@
             bindings = <
         &trans          &msc SCRL_LEFT  &trans        &msc SCRL_RIGHT  &msc SCRL_UP      &tog 9        &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP
         &kp LEFT_SHIFT  &kp LCTRL       &kp LEFT_GUI  &kp LALT         &msc SCRL_DOWN    &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN
-&trans  &trans          &mkp LCLK       &mkp MCLK     &mkp RCLK        &trans            &trans        &mkp LCLK       &mkp MCLK       &mkp RCLK        &mkp LCLK       &trans
+&trans  &trans          &mkp LCLK       &mkp MCLK     &mkp RCLK        &trans            &trans        &mkp LCLK       &mkp MCLK       &mkp RCLK        &mkp LCLK       &to 0
                                         &trans        &to 0            &trans            &trans        &to 0           &trans
             >;
 
@@ -600,6 +614,17 @@
             >;
 
             label = "SET";
+        };
+
+        CUSTOM_L {
+            bindings = <
+        &kp F24  &kp F21  &kp F18  &kp F15  &kp C_VOL_UP    &trans  &trans  &trans  &trans  &trans
+        &kp F23  &kp F20  &kp F17  &kp F14  &kp C_VOL_DN    &trans  &trans  &trans  &trans  &trans
+&trans  &kp F22  &kp F19  &kp F16  &kp F13  &kp K_MUTE      &trans  &trans  &trans  &trans  &trans  &trans
+                          &trans   &trans   &trans          &trans  &trans  &trans
+            >;
+
+            label = "CUST_L";
         };
     };
 
